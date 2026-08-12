@@ -139,7 +139,7 @@ data/            Synthetic market profiles and depth curves.
 ```
 
 The rule the layout enforces: **all risk logic lives in** `risk_engine/`, so the
-API, the simulations, and any notebook exercise byte-identical code. Details in
+API, simulations, and notebooks all execute the same risk logic. Details in
 [`docs/architecture.md`](docs/architecture.md).
 
 ## What the simulations are for
