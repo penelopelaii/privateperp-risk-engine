@@ -27,13 +27,13 @@ does continuous mark-based margining cease to be viable?
 
 **Finding.** No — not always. There is a *viability frontier* beyond which
 continuous mark-based margining itself ceases to be the appropriate mechanism.
-Past that frontier the honest output is a different instrument (periodic auction
-or settled forward), not a perp with a larger number in the margin field.
+Past that frontier the honest output is a change of market mechanism (periodic
+auction) or instrument (settled forward), not a perp with a larger number in the
+margin field.
 
 **Contribution.** The engine can switch from parameter recommendations to
-mechanism selection. A risk engine that can only return numbers will always
-return one, which is precisely how a venue ends up listing something it should
-not have.
+mechanism selection. A numeric-only engine may return parameters when the more
+defensible answer is a mechanism change.
 
 The live demo's **Viability Frontier** map shows this as regions in
 (staleness × volatility) space for one recorded synthetic illiquid profile. It
@@ -68,7 +68,7 @@ amount of collateral.
   longer fits between initial and maintenance margin. The liquidation signal can
   become weakly informative about actual solvency.
 
-R2 and R3 are the interesting ones, because raising margin does not address
+R2 and R3 are the key distinction, because raising margin does not address
 either. Reproduce the whole frontier with `python -m simulations.viability_frontier`,
 which is also where the profile behind these numbers is recorded. Most v1
 parameters remain assumptions rather than empirical estimates; two of roughly
@@ -95,9 +95,10 @@ Open `http://localhost:3000`. The frontend expects the API at
 load of the live demo may take a moment.
 
 Start with the presets, which walk one engine across four market qualities and
-produce four different instruments — perp, perp, periodic auction, settled
-forward. The viability frontier at the top of the page shows where continuous
-margining ceases to be available as mark staleness and volatility change.
+produce four different outcomes — continuous perp, continuous perp, periodic
+auction (mechanism), and settled forward (instrument). The viability frontier at
+the top of the page shows where continuous margining ceases to be available as
+mark staleness and volatility change.
 
 ```bash
 python -m pytest
@@ -137,14 +138,15 @@ simulations/     Scripts that stress-test the engine's recommendations.
 data/            Synthetic market profiles and depth curves.
 ```
 
-The rule the layout enforces: **all risk logic lives in `risk_engine/`**, so the
+The rule the layout enforces: **all risk logic lives in** `risk_engine/`, so the
 API, the simulations, and any notebook exercise byte-identical code. Details in
 [`docs/architecture.md`](docs/architecture.md).
 
 ## What the simulations are for
 
-The engine is not fit to data, so the simulations are the only check that its
-recommendations are sane. All use calendar time, 365 days per year.
+The engine is not calibrated to empirical market data, so the simulations are
+the only check that its recommendations are sane. All use calendar time, 365 days
+per year.
 
 | Simulation | Question it asks |
 | --- | --- |
@@ -160,8 +162,8 @@ so v1 asks a different question instead.
 
 ## Roadmap
 
-- Calibrate anything. Two of roughly thirty v1 parameters are fitted, and both to
-  data this repository invented.
+- Empirically calibrate parameters against measured market data. Two of roughly
+  thirty v1 parameters are fitted today, and both to data this repository invented.
 - Make account crowding observable from venue state, so the open interest cap can
   be a number rather than an order-of-magnitude range.
 - Add funding rate as an output; it is a primary risk lever for an underlying
