@@ -1,5 +1,9 @@
 import type { RiskEvaluationResponse, RiskInputs } from "./types";
-import type { MarketState, RiskEvaluationV1Response } from "./typesV1";
+import type {
+  FrontierV1Response,
+  MarketState,
+  RiskEvaluationV1Response,
+} from "./typesV1";
 
 // Trailing slashes are stripped because paths are appended directly below, and
 // a base URL ending in "/" would produce "//risk/v1/evaluate", which the API
@@ -40,6 +44,24 @@ export async function evaluateRiskV1(
 
   if (!response.ok) {
     throw new Error(`v1 risk evaluation failed (${response.status})`);
+  }
+
+  return response.json();
+}
+
+export async function evaluateFrontierV1(
+  state: MarketState,
+  signal?: AbortSignal,
+): Promise<FrontierV1Response> {
+  const response = await fetch(`${API_BASE_URL}/risk/v1/frontier`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ state }),
+    signal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`v1 frontier evaluation failed (${response.status})`);
   }
 
   return response.json();

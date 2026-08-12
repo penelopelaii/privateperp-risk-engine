@@ -1,22 +1,18 @@
 "use client";
 
-import frontierGrid from "@/lib/frontierGrid.json";
 import {
   MECHANISM_LABELS,
+  type FrontierCellV1,
+  type FrontierV1Response,
   type Mechanism,
   type MarketState,
   type RiskOutputsV1,
 } from "@/lib/typesV1";
 
 /**
- * The viability frontier for the recorded synthetic illiquid profile, swept over
- * mark staleness and annualised volatility. Cells are baked from the same
- * profile as `simulations/viability_frontier.py` so the map and the published
- * tables describe one evaluation.
- *
- * "You are here" tracks the console's current volatility and staleness on that
- * scenario map. Other inputs (depth, dispersion, hedges) still drive the live
- * assessment panel; the map itself holds the recorded scenario fixed.
+ * Viability frontier map. Cell colours and the white boundary come from
+ * ``/risk/v1/frontier`` (non-axis state held fixed, axes swept server-side).
+ * "You are here" tracks the console's current volatility and staleness only.
  */
 
 const MECHANISM_TONE: Record<Mechanism, string> = {
@@ -30,31 +26,23 @@ const W = 760;
 const H = 320;
 const PAD = { left: 58, right: 22, top: 22, bottom: 48 };
 
-const STALENESS = frontierGrid.staleness_days;
-const VOLATILITIES = frontierGrid.volatilities;
-const MIN_DAYS = STALENESS[0];
-const MAX_DAYS = STALENESS[STALENESS.length - 1];
-const MIN_VOL = VOLATILITIES[0];
-const MAX_VOL = VOLATILITIES[VOLATILITIES.length - 1];
-
-interface Cell {
-  volatility: number;
-  staleness_days: number;
-  mechanism: Mechanism;
-  viable: boolean;
-  initial_margin: number;
-  regimes: string[];
+function isContinuous(mechanism: Mechanism): boolean {
+  return mechanism === "continuous_perp";
 }
 
-const CELLS = frontierGrid.cells as Cell[];
-
-function nearestCell(staleness: number, volatility: number): Cell {
-  let best = CELLS[0];
+function nearestCell(
+  cells: FrontierCellV1[],
+  staleness: number,
+  volatility: number,
+  maxDays: number,
+  maxVol: number,
+): FrontierCellV1 {
+  let best = cells[0];
   let bestDist = Number.POSITIVE_INFINITY;
-  for (const cell of CELLS) {
+  for (const cell of cells) {
     const dist =
-      Math.abs(cell.staleness_days - staleness) / MAX_DAYS +
-      Math.abs(cell.volatility - volatility) / MAX_VOL;
+      Math.abs(cell.staleness_days - staleness) / maxDays +
+      Math.abs(cell.volatility - volatility) / maxVol;
     if (dist < bestDist) {
       best = cell;
       bestDist = dist;
@@ -63,26 +51,19 @@ function nearestCell(staleness: number, volatility: number): Cell {
   return best;
 }
 
-function isContinuous(mechanism: Mechanism): boolean {
-  return mechanism === "continuous_perp";
-}
-
-/**
- * Stepped outline of the continuous-perp region, derived from adjacent-cell
- * transitions in the baked regime grid. Not a fitted curve.
- */
 function buildFrontierBoundary(
+  cells: FrontierCellV1[],
+  stalenessAxis: number[],
+  volatilityAxis: number[],
   dayEdges: { day: number; x0: number; x1: number }[],
   volEdges: { vol: number; y0: number; y1: number }[],
 ): { path: string; labelX: number; labelY: number } | null {
   const mechanismAt = new Map<string, Mechanism>();
-  for (const cell of CELLS) {
+  for (const cell of cells) {
     mechanismAt.set(`${cell.volatility}|${cell.staleness_days}`, cell.mechanism);
   }
 
   const segments: string[] = [];
-  // Prefer labeling next to the staleness-direction (vertical) transitions —
-  // that is the frontier a reviewer reads left-to-right.
   let labelX = 0;
   let labelY = 0;
   let labelWeight = 0;
@@ -90,7 +71,9 @@ function buildFrontierBoundary(
   const pushVertical = (x: number, y0: number, y1: number) => {
     const top = Math.min(y0, y1);
     const bottom = Math.max(y0, y1);
-    segments.push(`M ${x.toFixed(1)} ${top.toFixed(1)} L ${x.toFixed(1)} ${bottom.toFixed(1)}`);
+    segments.push(
+      `M ${x.toFixed(1)} ${top.toFixed(1)} L ${x.toFixed(1)} ${bottom.toFixed(1)}`,
+    );
     labelX += x;
     labelY += (top + bottom) / 2;
     labelWeight += 1;
@@ -104,44 +87,40 @@ function buildFrontierBoundary(
     );
   };
 
-  for (let vi = 0; vi < VOLATILITIES.length; vi++) {
-    for (let di = 0; di < STALENESS.length; di++) {
+  for (let vi = 0; vi < volatilityAxis.length; vi++) {
+    for (let di = 0; di < stalenessAxis.length; di++) {
       const here = isContinuous(
-        mechanismAt.get(`${VOLATILITIES[vi]}|${STALENESS[di]}`)!,
+        mechanismAt.get(`${volatilityAxis[vi]}|${stalenessAxis[di]}`)!,
       );
       if (!here) continue;
 
       const dayEdge = dayEdges[di];
       const volEdge = volEdges[vi];
 
-      // Right: continuous → non-continuous along staleness.
-      if (di < STALENESS.length - 1) {
+      if (di < stalenessAxis.length - 1) {
         const right = isContinuous(
-          mechanismAt.get(`${VOLATILITIES[vi]}|${STALENESS[di + 1]}`)!,
+          mechanismAt.get(`${volatilityAxis[vi]}|${stalenessAxis[di + 1]}`)!,
         );
         if (!right) pushVertical(dayEdge.x1, volEdge.y0, volEdge.y1);
       }
 
-      // Left: non-continuous → continuous along staleness.
       if (di > 0) {
         const left = isContinuous(
-          mechanismAt.get(`${VOLATILITIES[vi]}|${STALENESS[di - 1]}`)!,
+          mechanismAt.get(`${volatilityAxis[vi]}|${stalenessAxis[di - 1]}`)!,
         );
         if (!left) pushVertical(dayEdge.x0, volEdge.y0, volEdge.y1);
       }
 
-      // Top: continuous → non-continuous toward higher volatility.
-      if (vi < VOLATILITIES.length - 1) {
+      if (vi < volatilityAxis.length - 1) {
         const above = isContinuous(
-          mechanismAt.get(`${VOLATILITIES[vi + 1]}|${STALENESS[di]}`)!,
+          mechanismAt.get(`${volatilityAxis[vi + 1]}|${stalenessAxis[di]}`)!,
         );
         if (!above) pushHorizontal(volEdge.y0, dayEdge.x0, dayEdge.x1);
       }
 
-      // Bottom: non-continuous → continuous toward lower volatility.
       if (vi > 0) {
         const below = isContinuous(
-          mechanismAt.get(`${VOLATILITIES[vi - 1]}|${STALENESS[di]}`)!,
+          mechanismAt.get(`${volatilityAxis[vi - 1]}|${stalenessAxis[di]}`)!,
         );
         if (!below) pushHorizontal(volEdge.y1, dayEdge.x0, dayEdge.x1);
       }
@@ -160,69 +139,120 @@ function buildFrontierBoundary(
 interface Props {
   state: MarketState;
   outputs: RiskOutputsV1 | null;
+  grid: FrontierV1Response | null;
+  pending: boolean;
+  error: string | null;
 }
 
-export default function ViabilityFrontier({ state, outputs }: Props) {
+export default function ViabilityFrontier({
+  state,
+  outputs,
+  grid,
+  pending,
+  error,
+}: Props) {
+  const stalenessAxis = grid?.staleness_days ?? [];
+  const volatilityAxis = grid?.volatilities ?? [];
+  const cells = grid?.cells ?? [];
+
+  const minDays = stalenessAxis[0] ?? 0;
+  const maxDays = stalenessAxis[stalenessAxis.length - 1] ?? 120;
+  const minVol = volatilityAxis[0] ?? 0.3;
+  const maxVol = volatilityAxis[volatilityAxis.length - 1] ?? 1.2;
+
   const xScale = (days: number) =>
     PAD.left +
-    ((days - MIN_DAYS) / (MAX_DAYS - MIN_DAYS)) * (W - PAD.left - PAD.right);
+    ((days - minDays) / (maxDays - minDays || 1)) * (W - PAD.left - PAD.right);
   const yScale = (vol: number) =>
     H -
     PAD.bottom -
-    ((vol - MIN_VOL) / (MAX_VOL - MIN_VOL)) * (H - PAD.top - PAD.bottom);
+    ((vol - minVol) / (maxVol - minVol || 1)) * (H - PAD.top - PAD.bottom);
 
-  const dayEdges = STALENESS.map((day, index) => {
-    const prev = index === 0 ? day : (STALENESS[index - 1] + day) / 2;
+  const dayEdges = stalenessAxis.map((day, index) => {
+    const prev = index === 0 ? day : (stalenessAxis[index - 1] + day) / 2;
     const next =
-      index === STALENESS.length - 1
+      index === stalenessAxis.length - 1
         ? day
-        : (day + STALENESS[index + 1]) / 2;
+        : (day + stalenessAxis[index + 1]) / 2;
     return { day, x0: xScale(prev), x1: xScale(next) };
   });
-  // Fix endpoints to the plot bounds.
-  dayEdges[0].x0 = PAD.left;
-  dayEdges[dayEdges.length - 1].x1 = W - PAD.right;
+  if (dayEdges.length > 0) {
+    dayEdges[0].x0 = PAD.left;
+    dayEdges[dayEdges.length - 1].x1 = W - PAD.right;
+  }
 
-  const volEdges = VOLATILITIES.map((vol, index) => {
-    const prev = index === 0 ? vol : (VOLATILITIES[index - 1] + vol) / 2;
+  const volEdges = volatilityAxis.map((vol, index) => {
+    const prev = index === 0 ? vol : (volatilityAxis[index - 1] + vol) / 2;
     const next =
-      index === VOLATILITIES.length - 1
+      index === volatilityAxis.length - 1
         ? vol
-        : (vol + VOLATILITIES[index + 1]) / 2;
+        : (vol + volatilityAxis[index + 1]) / 2;
     return { vol, y0: yScale(next), y1: yScale(prev) };
   });
-  volEdges[0].y1 = H - PAD.bottom;
-  volEdges[volEdges.length - 1].y0 = PAD.top;
+  if (volEdges.length > 0) {
+    volEdges[0].y1 = H - PAD.bottom;
+    volEdges[volEdges.length - 1].y0 = PAD.top;
+  }
 
   const markerX = xScale(
-    Math.min(MAX_DAYS, Math.max(MIN_DAYS, state.mark_staleness_days)),
+    Math.min(maxDays, Math.max(minDays, state.mark_staleness_days)),
   );
   const markerY = yScale(
-    Math.min(MAX_VOL, Math.max(MIN_VOL, state.volatility)),
+    Math.min(maxVol, Math.max(minVol, state.volatility)),
   );
-  const near = nearestCell(state.mark_staleness_days, state.volatility);
 
-  const liveMechanism = outputs?.recommended_mechanism ?? near.mechanism;
-  const liveViable = outputs?.viable_as_continuous_perp ?? near.viable;
+  const near =
+    cells.length > 0
+      ? nearestCell(
+          cells,
+          state.mark_staleness_days,
+          state.volatility,
+          maxDays,
+          maxVol,
+        )
+      : null;
+
+  const liveMechanism =
+    outputs?.recommended_mechanism ?? near?.mechanism ?? "continuous_perp";
+  const liveViable = outputs?.viable_as_continuous_perp ?? near?.viable ?? true;
   const liveIM =
-    outputs?.margin_diagnostics.required_initial_margin ?? near.initial_margin;
+    outputs?.margin_diagnostics.required_initial_margin ??
+    near?.initial_margin ??
+    0;
 
-  const frontier = buildFrontierBoundary(dayEdges, volEdges);
+  const frontier =
+    cells.length > 0
+      ? buildFrontierBoundary(
+          cells,
+          stalenessAxis,
+          volatilityAxis,
+          dayEdges,
+          volEdges,
+        )
+      : null;
 
   return (
-    <section className="panel experiment frontier">
+    <section
+      className={
+        pending ? "panel experiment frontier pending" : "panel experiment frontier"
+      }
+    >
       <div className="frontier-header">
         <h2>The Viability Frontier</h2>
         <span className="frontier-tag">
-          Scenario frontier · synthetic assumptions
+          Conditional on current non-axis inputs · synthetic
         </span>
       </div>
 
       <p className="experiment-intro">
         Continuous mark-based margining is not a dial you turn. It is a region
-        in (staleness, volatility) space. Inside it, risk parameters should
-        tighten. Outside it, the market mechanism itself should change.
+        in (staleness, volatility) space given the rest of the current market
+        state. Inside it, risk parameters should tighten. Outside it, the market
+        mechanism itself should change. Axis sliders move the marker; other
+        inputs recompute the map.
       </p>
+
+      {error ? <p className="error">{error}</p> : null}
 
       <svg
         className="chart"
@@ -230,8 +260,10 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
         role="img"
         aria-label="Viability frontier: recommended mechanism by mark staleness and annualised volatility"
       >
-        {CELLS.map((cell) => {
-          const dayEdge = dayEdges.find((edge) => edge.day === cell.staleness_days);
+        {cells.map((cell) => {
+          const dayEdge = dayEdges.find(
+            (edge) => edge.day === cell.staleness_days,
+          );
           const volEdge = volEdges.find((edge) => edge.vol === cell.volatility);
           if (!dayEdge || !volEdge) return null;
           return (
@@ -247,7 +279,6 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
           );
         })}
 
-        {/* Axes */}
         <line
           x1={PAD.left}
           x2={W - PAD.right}
@@ -304,7 +335,6 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
           Annualised volatility
         </text>
 
-        {/* Continuous-perp viability frontier: stepped cell transitions */}
         {frontier ? (
           <g className="frontier-boundary">
             <path d={frontier.path} className="frontier-boundary-line" />
@@ -318,7 +348,6 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
           </g>
         ) : null}
 
-        {/* You are here */}
         <circle
           cx={markerX}
           cy={markerY}
@@ -398,12 +427,12 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
           </span>
         </div>
         <div className="metric">
-          <span className="metric-label">Nearest scenario cell</span>
+          <span className="metric-label">Nearest map cell</span>
           <span className="metric-value">
-            {MECHANISM_LABELS[near.mechanism]}
+            {near ? MECHANISM_LABELS[near.mechanism] : "—"}
           </span>
           <span className="metric-hint">
-            Map holds the recorded illiquid profile fixed
+            Map holds non-axis inputs fixed while sweeping the axes
           </span>
         </div>
       </div>
@@ -415,10 +444,11 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
       </blockquote>
 
       <p className="provenance-note">
-        Scenario map for the recorded synthetic illiquid profile in{" "}
-        <code>simulations/viability_frontier.py</code> (5% source dispersion).
-        Not an empirical estimate. Reproduce the published tables with{" "}
-        <code>python -m simulations.viability_frontier</code>.
+        Each cell is a frozen v1 evaluation with the current non-axis inputs held
+        fixed. Not an empirical estimate.
+        {grid
+          ? ` ${grid.evaluations} evaluations · engine ${grid.engine_version}.`
+          : null}
       </p>
     </section>
   );

@@ -120,6 +120,46 @@ export interface RiskEvaluationV1Response {
   outputs: RiskOutputsV1;
 }
 
+export interface FrontierCellV1 {
+  volatility: number;
+  staleness_days: number;
+  mechanism: Mechanism;
+  viable: boolean;
+  initial_margin: number;
+  regimes: RegimeId[];
+}
+
+export interface FrontierV1Response {
+  staleness_days: number[];
+  volatilities: number[];
+  cells: FrontierCellV1[];
+  evaluations: number;
+  engine_version: string;
+}
+
+/** Axis fields swept by `/risk/v1/frontier` — excluded from the frontier fingerprint. */
+export const FRONTIER_AXIS_KEYS = [
+  "volatility",
+  "mark_staleness_days",
+  "mark_refresh_days",
+] as const;
+
+/**
+ * Stable fingerprint of the non-axis market state (and optional policy).
+ * Axis slider changes must not alter this string.
+ */
+export function nonAxisFrontierFingerprint(
+  state: MarketState,
+  policy?: Record<string, number> | null,
+): string {
+  const rest: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(state)) {
+    if ((FRONTIER_AXIS_KEYS as readonly string[]).includes(key)) continue;
+    rest[key] = value;
+  }
+  return JSON.stringify({ state: rest, policy: policy ?? null });
+}
+
 export const MECHANISM_LABELS: Record<Mechanism, string> = {
   continuous_perp: "Continuous perp",
   periodic_auction: "Periodic auction",

@@ -36,9 +36,10 @@ mechanism selection. A numeric-only engine may return parameters when the more
 defensible answer is a mechanism change.
 
 The live demo's **Viability Frontier** map shows this as regions in
-(staleness × volatility) space for one recorded synthetic illiquid profile. It
-is a scenario frontier under stated assumptions, not a universal empirical
-boundary.
+(staleness × volatility) space, holding the current non-axis market-state inputs
+fixed. Change liquidity, source dispersion, hedgeability, or jump assumptions
+and the frontier itself moves. It remains a scenario frontier under synthetic
+assumptions, not a universal empirical boundary.
 
 ## The headline finding
 

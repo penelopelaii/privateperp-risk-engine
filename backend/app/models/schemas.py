@@ -10,6 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from risk_engine.inputs import RiskInputs, RiskOutputs
 from risk_engine.v1 import MarketState, PolicyParameters, RiskOutputsV1
+from risk_engine.v1.regimes import Mechanism, RegimeId
 
 
 class HealthResponse(BaseModel):
@@ -104,3 +105,39 @@ class RiskEvaluationV1Response(BaseModel):
     state: MarketState
     policy: PolicyParameters
     outputs: RiskOutputsV1
+
+
+class FrontierCellV1(BaseModel):
+    """One cell of the viability-frontier map — render data only."""
+
+    volatility: float
+    staleness_days: float
+    mechanism: Mechanism
+    viable: bool
+    initial_margin: float
+    regimes: list[RegimeId]
+
+
+class FrontierV1Request(BaseModel):
+    """Request body for ``POST /risk/v1/frontier``.
+
+    Sweeps a fixed (staleness × volatility) grid while holding every other field
+    of ``state`` constant. Request ``volatility``, ``mark_staleness_days``, and
+    ``mark_refresh_days`` are ignored for cell colour: each cell sets
+    ``mark_refresh_days = max(staleness, 1)`` to match the frozen research
+    convention. The live assessment still uses the full state via
+    ``/risk/v1/evaluate``.
+    """
+
+    state: MarketState
+    policy: PolicyParameters | None = None
+
+
+class FrontierV1Response(BaseModel):
+    """Response body for ``POST /risk/v1/frontier``."""
+
+    staleness_days: list[float]
+    volatilities: list[float]
+    cells: list[FrontierCellV1]
+    evaluations: int
+    engine_version: str

@@ -110,6 +110,7 @@ Two endpoints, one per engine:
 | --- | --- | --- |
 | `POST /risk/evaluate` | v0 | Frozen. Request and response shapes will not change |
 | `POST /risk/v1/evaluate` | v1 | Takes `MarketState` plus optional `PolicyParameters`, echoes both back |
+| `POST /risk/v1/frontier` | v1 | Sweeps a fixed staleness × volatility grid through the same evaluator, holding non-axis fields fixed; returns render-only cells |
 
 The one piece of judgement in `services/risk_service.py` is that `evaluate_v1`
 tags every field of an HTTP-supplied state as `ASSUMED`. Nothing arriving from a
@@ -129,10 +130,11 @@ Next.js App Router with TypeScript. `lib/types.ts` and `lib/typesV1.ts` mirror
 the Pydantic models by hand; the models are small and stable enough that
 generating them from the OpenAPI schema is not yet worth the build step.
 
-The frontend has no risk logic. The viability-frontier map is baked from the
-same recorded synthetic profile as `simulations/viability_frontier.py`; live
-assessments still come from the API. That keeps the browser from becoming a
-second, silently diverging implementation of the model.
+The frontend has no risk logic. The viability-frontier map is produced by
+``POST /risk/v1/frontier``, which sweeps the frozen axes through the same v1
+evaluator while holding the console's non-axis inputs fixed. Live assessments
+still come from ``POST /risk/v1/evaluate``. That keeps the browser from becoming
+a second, silently diverging implementation of the model.
 
 | Path | Responsibility |
 | --- | --- |
@@ -140,7 +142,7 @@ second, silently diverging implementation of the model.
 | `components/V1Console.tsx` | v1 state, debounced evaluation |
 | `components/V1InputForm.tsx` | Six primary drivers, the rest behind Advanced |
 | `components/V1Outputs.tsx` | Viability, mechanism, regimes, limits, dimensions |
-| `components/ViabilityFrontier.tsx` | Staleness × volatility mechanism map for the recorded scenario |
+| `components/ViabilityFrontier.tsx` | Staleness × volatility mechanism map from `/risk/v1/frontier` |
 
 ## Deliberate omissions
 

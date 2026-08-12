@@ -5,12 +5,14 @@ from __future__ import annotations
 from fastapi import APIRouter
 
 from backend.app.models import (
+    FrontierV1Request,
+    FrontierV1Response,
     RiskEvaluationRequest,
     RiskEvaluationResponse,
     RiskEvaluationV1Request,
     RiskEvaluationV1Response,
 )
-from backend.app.services import evaluate, evaluate_v1
+from backend.app.services import evaluate, evaluate_frontier_v1, evaluate_v1
 from risk_engine.v1 import DEFAULT_POLICY
 
 router = APIRouter(prefix="/risk", tags=["risk"])
@@ -49,3 +51,15 @@ def evaluate_market_v1(request: RiskEvaluationV1Request) -> RiskEvaluationV1Resp
         policy=policy,
         outputs=evaluate_v1(request.state, policy),
     )
+
+
+@router.post("/v1/frontier", response_model=FrontierV1Response)
+def evaluate_frontier(request: FrontierV1Request) -> FrontierV1Response:
+    """Sweep the viability map for the current non-axis market state.
+
+    Holds every field of ``state`` fixed except the swept axes. Each cell is a
+    normal v1 evaluation — the same path as ``/risk/v1/evaluate``. Request axis
+    fields are overwritten per cell; see ``evaluate_frontier_v1``.
+    """
+    policy = request.policy or DEFAULT_POLICY
+    return evaluate_frontier_v1(request.state, policy)
