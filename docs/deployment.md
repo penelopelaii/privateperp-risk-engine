@@ -90,9 +90,12 @@ to miss.
 
 | Variable | Value |
 | --- | --- |
-| `NEXT_PUBLIC_API_BASE_URL` | The backend URL, no trailing slash, e.g. `https://YOUR-API.onrender.com` |
+| `NEXT_PUBLIC_API_BASE_URL` | The backend URL, e.g. `https://YOUR-API.onrender.com` |
 
 Add it for Production, Preview, and Development so preview deployments work too.
+A trailing slash is tolerated — the client strips them, because a base URL ending
+in `/` would otherwise build `//risk/v1/evaluate` and the API answers that with a
+404.
 
 4. Deploy, then set the backend's `PRIVATEPERP_CORS_ORIGINS` to the resulting URL
    and redeploy the backend.
