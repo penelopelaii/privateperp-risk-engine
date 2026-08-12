@@ -1,0 +1,21 @@
+{
+  "description": "Gap risk on a synthetic private-company exposure that reprices in discrete steps.",
+  "n_paths": 20000,
+  "horizon_days": 30,
+  "annual_volatility": 0.55,
+  "jump_intensity_per_year": 6.0,
+  "jump_mean_log_return": -0.05,
+  "jump_volatility": 0.25,
+  "seed": 7,
+  "inputs": {
+    "liquidity_score": 0.15,
+    "oracle_confidence": 0.35,
+    "price_staleness_days": 60.0,
+    "oracle_dispersion": 0.15,
+    "jump_risk": 0.8,
+    "hedgeability_score": 0.1,
+    "event_proximity": 0.5,
+    "current_open_interest": 4000000.0,
+    "market_depth": 500000.0
+  }
+}

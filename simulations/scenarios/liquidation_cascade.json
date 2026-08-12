@@ -1,0 +1,22 @@
+{
+  "description": "Forced unwinds feeding back into a thin book, triggering further unwinds.",
+  "n_accounts": 250,
+  "n_paths": 2000,
+  "shock_log_return": -0.20,
+  "market_depth": 500000.0,
+  "total_open_interest": 4000000.0,
+  "price_impact_exponent": 0.5,
+  "max_rounds": 10,
+  "seed": 13,
+  "inputs": {
+    "liquidity_score": 0.15,
+    "oracle_confidence": 0.35,
+    "price_staleness_days": 45.0,
+    "oracle_dispersion": 0.14,
+    "jump_risk": 0.75,
+    "hedgeability_score": 0.1,
+    "event_proximity": 0.4,
+    "current_open_interest": 4000000.0,
+    "market_depth": 500000.0
+  }
+}

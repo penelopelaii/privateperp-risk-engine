@@ -1,0 +1,19 @@
+[project]
+name = "privateperp-risk-engine"
+version = "0.1.0"
+description = "Research scaffolding for adaptive perpetual futures risk parameters on illiquid, hard-to-price underlyings."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint.per-file-ignores]
+# Calling Depends() in an argument default is FastAPI's dependency-injection
+# idiom, not the mutable-default bug B008 exists to catch.
+"backend/app/**" = ["B008"]

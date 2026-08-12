@@ -1,0 +1,4 @@
+# Root-level indirection so buildpack-style hosts (Railway, Heroku, Fly) detect
+# a Python project without needing a custom build command. The real list is in
+# backend/requirements.txt.
+-r backend/requirements.txt

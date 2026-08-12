@@ -1,0 +1,67 @@
+import type { RiskEvaluationResponse, RiskInputs } from "./types";
+import type { MarketState, RiskEvaluationV1Response } from "./typesV1";
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://127.0.0.1:8000";
+
+export async function evaluateRisk(
+  inputs: RiskInputs,
+  signal?: AbortSignal,
+): Promise<RiskEvaluationResponse> {
+  const response = await fetch(`${API_BASE_URL}/risk/evaluate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ inputs }),
+    signal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Risk evaluation failed (${response.status})`);
+  }
+
+  return response.json();
+}
+
+export async function evaluateRiskV1(
+  state: MarketState,
+  signal?: AbortSignal,
+): Promise<RiskEvaluationV1Response> {
+  const response = await fetch(`${API_BASE_URL}/risk/v1/evaluate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ state }),
+    signal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`v1 risk evaluation failed (${response.status})`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Evaluate one market state across a range of mark staleness values.
+ *
+ * Issued as parallel requests against the same endpoint rather than a bespoke
+ * sweep route, so the curve the frontend draws is made of exactly the same
+ * evaluations a caller would get one at a time.
+ */
+export async function sweepStaleness(
+  state: MarketState,
+  stalenessDays: number[],
+  signal?: AbortSignal,
+): Promise<RiskEvaluationV1Response[]> {
+  return Promise.all(
+    stalenessDays.map((days) =>
+      evaluateRiskV1(
+        {
+          ...state,
+          mark_staleness_days: days,
+          mark_refresh_days: Math.max(days, 1),
+        },
+        signal,
+      ),
+    ),
+  );
+}

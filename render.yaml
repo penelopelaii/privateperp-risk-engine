@@ -1,0 +1,31 @@
+# Render blueprint for the FastAPI backend.
+#
+# The frontend is not described here; it deploys to Vercel from `frontend/`.
+# See docs/deployment.md for the steps that need a browser and an account.
+#
+# No secrets belong in this file. The two CORS variables are marked `sync: false`
+# so they are set once in the Render dashboard rather than committed, because
+# they depend on the frontend URL that does not exist until after the first
+# Vercel deploy.
+
+services:
+  - type: web
+    name: privateperp-risk-engine-api
+    runtime: python
+    plan: free
+    region: oregon
+    rootDir: .
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      # Comma-separated list of allowed frontend origins, e.g.
+      # https://privateperp-risk-engine.vercel.app
+      - key: PRIVATEPERP_CORS_ORIGINS
+        sync: false
+      # Optional. Set to https://.*\.vercel\.app to allow preview deployments,
+      # whose hostname changes on every push.
+      - key: PRIVATEPERP_CORS_ORIGIN_REGEX
+        sync: false
