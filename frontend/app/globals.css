@@ -680,6 +680,31 @@ input[type="range"]::-moz-range-thumb {
   font-weight: 600;
 }
 
+.frontier-boundary-line {
+  fill: none;
+  stroke: #f4f6fb;
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.frontier-boundary-label {
+  fill: #f4f6fb;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.swatch-frontier {
+  background: transparent;
+  border: 1.5px solid #f4f6fb;
+  box-sizing: border-box;
+}
+
 .frontier-contrast {
   display: grid;
   grid-template-columns: 1fr 1fr;

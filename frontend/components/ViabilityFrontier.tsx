@@ -63,6 +63,100 @@ function nearestCell(staleness: number, volatility: number): Cell {
   return best;
 }
 
+function isContinuous(mechanism: Mechanism): boolean {
+  return mechanism === "continuous_perp";
+}
+
+/**
+ * Stepped outline of the continuous-perp region, derived from adjacent-cell
+ * transitions in the baked regime grid. Not a fitted curve.
+ */
+function buildFrontierBoundary(
+  dayEdges: { day: number; x0: number; x1: number }[],
+  volEdges: { vol: number; y0: number; y1: number }[],
+): { path: string; labelX: number; labelY: number } | null {
+  const mechanismAt = new Map<string, Mechanism>();
+  for (const cell of CELLS) {
+    mechanismAt.set(`${cell.volatility}|${cell.staleness_days}`, cell.mechanism);
+  }
+
+  const segments: string[] = [];
+  // Prefer labeling next to the staleness-direction (vertical) transitions —
+  // that is the frontier a reviewer reads left-to-right.
+  let labelX = 0;
+  let labelY = 0;
+  let labelWeight = 0;
+
+  const pushVertical = (x: number, y0: number, y1: number) => {
+    const top = Math.min(y0, y1);
+    const bottom = Math.max(y0, y1);
+    segments.push(`M ${x.toFixed(1)} ${top.toFixed(1)} L ${x.toFixed(1)} ${bottom.toFixed(1)}`);
+    labelX += x;
+    labelY += (top + bottom) / 2;
+    labelWeight += 1;
+  };
+
+  const pushHorizontal = (y: number, x0: number, x1: number) => {
+    const left = Math.min(x0, x1);
+    const right = Math.max(x0, x1);
+    segments.push(
+      `M ${left.toFixed(1)} ${y.toFixed(1)} L ${right.toFixed(1)} ${y.toFixed(1)}`,
+    );
+  };
+
+  for (let vi = 0; vi < VOLATILITIES.length; vi++) {
+    for (let di = 0; di < STALENESS.length; di++) {
+      const here = isContinuous(
+        mechanismAt.get(`${VOLATILITIES[vi]}|${STALENESS[di]}`)!,
+      );
+      if (!here) continue;
+
+      const dayEdge = dayEdges[di];
+      const volEdge = volEdges[vi];
+
+      // Right: continuous → non-continuous along staleness.
+      if (di < STALENESS.length - 1) {
+        const right = isContinuous(
+          mechanismAt.get(`${VOLATILITIES[vi]}|${STALENESS[di + 1]}`)!,
+        );
+        if (!right) pushVertical(dayEdge.x1, volEdge.y0, volEdge.y1);
+      }
+
+      // Left: non-continuous → continuous along staleness.
+      if (di > 0) {
+        const left = isContinuous(
+          mechanismAt.get(`${VOLATILITIES[vi]}|${STALENESS[di - 1]}`)!,
+        );
+        if (!left) pushVertical(dayEdge.x0, volEdge.y0, volEdge.y1);
+      }
+
+      // Top: continuous → non-continuous toward higher volatility.
+      if (vi < VOLATILITIES.length - 1) {
+        const above = isContinuous(
+          mechanismAt.get(`${VOLATILITIES[vi + 1]}|${STALENESS[di]}`)!,
+        );
+        if (!above) pushHorizontal(volEdge.y0, dayEdge.x0, dayEdge.x1);
+      }
+
+      // Bottom: non-continuous → continuous toward lower volatility.
+      if (vi > 0) {
+        const below = isContinuous(
+          mechanismAt.get(`${VOLATILITIES[vi - 1]}|${STALENESS[di]}`)!,
+        );
+        if (!below) pushHorizontal(volEdge.y1, dayEdge.x0, dayEdge.x1);
+      }
+    }
+  }
+
+  if (segments.length === 0 || labelWeight === 0) return null;
+
+  return {
+    path: segments.join(" "),
+    labelX: Math.min(labelX / labelWeight + 14, W - PAD.right - 8),
+    labelY: labelY / labelWeight,
+  };
+}
+
 interface Props {
   state: MarketState;
   outputs: RiskOutputsV1 | null;
@@ -112,6 +206,8 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
   const liveViable = outputs?.viable_as_continuous_perp ?? near.viable;
   const liveIM =
     outputs?.margin_diagnostics.required_initial_margin ?? near.initial_margin;
+
+  const frontier = buildFrontierBoundary(dayEdges, volEdges);
 
   return (
     <section className="panel experiment frontier">
@@ -208,6 +304,20 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
           Annualised volatility
         </text>
 
+        {/* Continuous-perp viability frontier: stepped cell transitions */}
+        {frontier ? (
+          <g className="frontier-boundary">
+            <path d={frontier.path} className="frontier-boundary-line" />
+            <text
+              x={frontier.labelX}
+              y={frontier.labelY}
+              className="frontier-boundary-label"
+            >
+              Continuous-perp viability frontier
+            </text>
+          </g>
+        ) : null}
+
         {/* You are here */}
         <circle
           cx={markerX}
@@ -242,6 +352,10 @@ export default function ViabilityFrontier({ state, outputs }: Props) {
             {MECHANISM_LABELS[mechanism]}
           </span>
         ))}
+        <span className="legend-item">
+          <i className="swatch swatch-frontier" /> Continuous-perp viability
+          frontier
+        </span>
       </div>
 
       <div className="frontier-contrast">
