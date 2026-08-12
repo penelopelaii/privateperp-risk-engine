@@ -16,7 +16,9 @@ correct output is a different instrument, not a perp with a bigger number in the
 margin field. A risk engine that can only return numbers will always return one,
 which is precisely how a venue ends up listing something it should not have.
 
-**Live demo:** _not yet deployed_ — see [`docs/deployment.md`](docs/deployment.md).
+**Live demo:** **[privateperp-risk-engine.vercel.app](https://privateperp-risk-engine.vercel.app)**
+— start with the presets, then age the mark on the staleness slider. The API is on
+a free tier that sleeps when idle, so the first load may take a moment.
 
 **All data is synthetic.** Nothing here uses proprietary, confidential, or
 internal information of any kind, and no result in this repository is evidence

@@ -1,5 +1,12 @@
 # Deployment
 
+Currently deployed at:
+
+| | URL |
+| --- | --- |
+| Frontend | [privateperp-risk-engine.vercel.app](https://privateperp-risk-engine.vercel.app) |
+| Backend | [privateperp-risk-engine-api.onrender.com](https://privateperp-risk-engine-api.onrender.com) ([docs](https://privateperp-risk-engine-api.onrender.com/docs)) |
+
 Two services: the Next.js frontend on Vercel, the FastAPI backend on Render or
 Railway. Both have free tiers that are sufficient for a demo.
 
