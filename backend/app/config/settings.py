@@ -33,6 +33,11 @@ class Settings(BaseSettings):
         """
         if not isinstance(value, str):
             return value
+        if not value.strip():
+            # An empty variable means "not configured", not "allow nothing".
+            # Hosting dashboards make it easy to submit a blank value, and
+            # silently blocking every origin is a miserable thing to debug.
+            return cls.model_fields["cors_origins"].default
         if value.lstrip().startswith("["):
             return json.loads(value)
         return [origin.strip() for origin in value.split(",") if origin.strip()]

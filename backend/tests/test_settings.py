@@ -28,6 +28,15 @@ def test_a_single_origin_needs_no_delimiter(monkeypatch):
     assert Settings().cors_origins == ["https://demo.vercel.app"]
 
 
+def test_an_empty_variable_falls_back_to_the_default(monkeypatch):
+    """A blank dashboard field must not silently block every origin."""
+    monkeypatch.setenv("PRIVATEPERP_CORS_ORIGINS", "")
+    assert Settings().cors_origins == ["http://localhost:3000"]
+
+    monkeypatch.setenv("PRIVATEPERP_CORS_ORIGINS", "   ")
+    assert Settings().cors_origins == ["http://localhost:3000"]
+
+
 def test_origin_regex_is_configurable(monkeypatch):
     """Vercel preview deployments get a fresh hostname on every push."""
     monkeypatch.setenv(

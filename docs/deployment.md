@@ -36,17 +36,31 @@ described in code and you only supply the environment-specific values.
 curl -s https://YOUR-API.onrender.com/health
 ```
 
-5. After the frontend is deployed, set these in the Render dashboard under
-   **Environment**, then redeploy:
+Render prompts for the two `sync: false` variables while applying the blueprint.
+Submitting either one **blank is safe** — a blank value is treated as "not
+configured" and falls back to allowing `http://localhost:3000` only, rather than
+blocking every origin.
 
 | Variable | Value |
 | --- | --- |
 | `PRIVATEPERP_CORS_ORIGINS` | Your Vercel URL, e.g. `https://privateperp-risk-engine.vercel.app`. Comma-separate several |
-| `PRIVATEPERP_CORS_ORIGIN_REGEX` | Optional. `https://.*\.vercel\.app` to also allow preview deployments |
+| `PRIVATEPERP_CORS_ORIGIN_REGEX` | `https://.*\.vercel\.app` to allow the production URL and every preview deployment |
 
-Until `PRIVATEPERP_CORS_ORIGINS` is set the API only accepts
-`http://localhost:3000`, and the deployed frontend will show "Could not reach the
-risk engine API."
+There is a chicken-and-egg problem here: the frontend URL does not exist until
+after Vercel deploys, but the backend needs to allow it. Two ways out.
+
+**Set the regex now** (fewer steps). Enter `https://.*\.vercel\.app` for
+`PRIVATEPERP_CORS_ORIGIN_REGEX` while applying the blueprint and leave
+`PRIVATEPERP_CORS_ORIGINS` blank. Any Vercel URL then works on the first try, so
+the backend never needs a second deploy. The cost is that any site hosted on
+`*.vercel.app` may call this API — acceptable for a public demo that holds no
+data and needs no credentials, and worth tightening afterwards by putting your
+exact URL in `PRIVATEPERP_CORS_ORIGINS`.
+
+**Or set the exact origin later** (tighter). Leave both blank, deploy the
+frontend, then come back, set `PRIVATEPERP_CORS_ORIGINS` to the exact Vercel URL,
+and redeploy the backend. Until that redeploy finishes the deployed frontend will
+show "Could not reach the risk engine API", which is expected rather than broken.
 
 **Free tier caveat.** Render spins an idle free service down, and the first
 request after that takes tens of seconds. The staleness experiment opens with 41
