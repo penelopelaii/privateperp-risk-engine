@@ -1,0 +1,3285 @@
+{
+  "profile": "recorded illiquid private (simulations/viability_frontier.py)",
+  "source_dispersion": 0.05,
+  "staleness_days": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    14,
+    21,
+    30,
+    45,
+    60,
+    90,
+    120
+  ],
+  "volatilities": [
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95,
+    1.0,
+    1.05,
+    1.1,
+    1.15,
+    1.2
+  ],
+  "cells": [
+    {
+      "volatility": 0.3,
+      "staleness_days": 0,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.55988,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 1,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.563755,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.600569,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.631626,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.658981,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.683693,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.706389,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.727483,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 10,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.783649,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 14,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.847173,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 21,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.939297,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.03628,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.166962,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.274208,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.447817,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.3,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.588203,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 0,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.574023,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 1,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.579268,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.619023,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.652683,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.682407,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.709311,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.734057,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.757083,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 10,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.818499,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 14,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.8881,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 21,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.989229,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.095886,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.239896,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.358348,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.550662,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.35,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.706734,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 0,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.588165,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 1,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.594975,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.637822,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.674205,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.706396,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.73557,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.762431,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.787442,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 10,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.854217,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 14,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.929972,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.04015,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.156475,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.313764,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.443364,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.654286,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.4,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.825971,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 0,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.602307,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 1,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.610868,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.656945,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.696153,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.730888,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.762392,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.791413,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.818446,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 10,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.890647,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 14,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.972593,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.091827,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.217794,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.388305,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.529001,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.758453,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.45,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.945695,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 0,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.614565,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 1,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.625204,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.674749,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.716965,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.754385,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.788333,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.819607,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.848737,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 10,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.926531,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.014803,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.143222,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.278915,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.462713,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.61454,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.862553,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.5,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.065368,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 0,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.624968,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 1,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.638094,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.691387,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.736809,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.777064,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.813569,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.847186,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.878486,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 10,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.962022,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.056735,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.194441,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.339923,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.537056,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.700035,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.966629,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.55,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.185025,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.635902,
+      "regimes": []
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 1,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.651755,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.708914,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.757604,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.800721,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.839796,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.875757,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.909222,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 10,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.998468,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.099566,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.246475,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.401658,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.612026,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.786088,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.071174,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.6,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.305095,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.647258,
+      "regimes": []
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 1,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.666062,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.727181,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.779179,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.825174,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.866818,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.905116,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.940736,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.035651,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.143083,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.299116,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.46393,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.687454,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.872548,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.176059,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.65,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.425462,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.658958,
+      "regimes": []
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.68092,
+      "regimes": []
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 2,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.746072,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 3,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.8014,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 4,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.850275,
+      "regimes": [
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.894482,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.935106,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 7,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.972867,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.073411,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.187127,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.35222,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.526607,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.763226,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.95931,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.281196,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.7,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.54605,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.670938,
+      "regimes": []
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.696251,
+      "regimes": []
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.76549,
+      "regimes": []
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 3,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.824159,
+      "regimes": []
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 4,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.875909,
+      "regimes": []
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.922667,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.965604,
+      "regimes": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.005493,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.111626,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.231583,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.405682,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.589596,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.839259,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.046302,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.386524,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.75,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.666804,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.683154,
+      "regimes": []
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.711992,
+      "regimes": []
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.785356,
+      "regimes": []
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 3,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.847369,
+      "regimes": []
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 4,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.901984,
+      "regimes": []
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.951281,
+      "regimes": [
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 6,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.996516,
+      "regimes": [
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.038519,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.150204,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.276365,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.459424,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.652826,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.915495,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.133473,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.491999,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.8,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.787687,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.695566,
+      "regimes": []
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.728092,
+      "regimes": []
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.805605,
+      "regimes": []
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 3,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.870956,
+      "regimes": []
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 4,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.928425,
+      "regimes": []
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 5,
+      "mechanism": "periodic_auction",
+      "viable": false,
+      "initial_margin": 0.980247,
+      "regimes": [
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 6,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.027768,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.071871,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.189077,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.321409,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.513389,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.716249,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.991891,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.220784,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.59759,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.85,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.908671,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.708147,
+      "regimes": []
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.744506,
+      "regimes": []
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.826182,
+      "regimes": []
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 3,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.894864,
+      "regimes": []
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 4,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.955172,
+      "regimes": []
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 5,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.009506,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 6,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.059299,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.105491,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.228188,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.366664,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.567534,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.779826,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.068416,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.308207,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.703274,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.9,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.029735,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.720872,
+      "regimes": []
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.761196,
+      "regimes": []
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.847043,
+      "regimes": []
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 3,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.919043,
+      "regimes": []
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 4,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.982178,
+      "regimes": []
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 5,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.039009,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 6,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.091062,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.139333,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.267497,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.412093,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.621826,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.843527,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.145045,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.395721,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.809032,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 0.95,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.150864,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.734873,
+      "regimes": []
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.778933,
+      "regimes": []
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.8688,
+      "regimes": []
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 3,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.944018,
+      "regimes": []
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 4,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.009905,
+      "regimes": [
+        "R1"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 5,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.069177,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 6,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.123446,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.173759,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.307307,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.457954,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.676477,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.907533,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.221923,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.483452,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.914969,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 1.0,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.272148,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.749015,
+      "regimes": []
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.796863,
+      "regimes": []
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.890738,
+      "regimes": []
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 3,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.969161,
+      "regimes": []
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 4,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.037788,
+      "regimes": [
+        "R1"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 5,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.099491,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 6,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.155966,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.208313,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.34723,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.503913,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.73121,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.971609,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.29886,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.571234,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.020947,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.05,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.393468,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.763157,
+      "regimes": []
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.814877,
+      "regimes": []
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.912766,
+      "regimes": []
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 3,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.994388,
+      "regimes": []
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 4,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.065751,
+      "regimes": [
+        "R1"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 5,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.129881,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 6,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.188559,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.242937,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.387214,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.549925,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.785987,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.035722,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.375828,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.659043,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.126948,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.1,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.514808,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.777299,
+      "regimes": []
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.83297,
+      "regimes": []
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.934875,
+      "regimes": []
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 3,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.019693,
+      "regimes": [
+        "R1"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 4,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.093786,
+      "regimes": [
+        "R1"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 5,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.160338,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 6,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.221215,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.27762,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.42725,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.595984,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.840804,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.099868,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.452823,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.746876,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.232968,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.15,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.636165,
+      "regimes": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 0,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.791442,
+      "regimes": []
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 1,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.851136,
+      "regimes": []
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 2,
+      "mechanism": "continuous_perp",
+      "viable": true,
+      "initial_margin": 0.957057,
+      "regimes": []
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 3,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.045066,
+      "regimes": [
+        "R1"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 4,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.121885,
+      "regimes": [
+        "R1"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 5,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.190856,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 6,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.253928,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 7,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.312358,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 10,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.467334,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 14,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.642083,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 21,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 1.895654,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 30,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.164044,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 45,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.529842,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 60,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 2.83473,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 90,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.339005,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "volatility": 1.2,
+      "staleness_days": 120,
+      "mechanism": "settled_forward",
+      "viable": false,
+      "initial_margin": 3.757536,
+      "regimes": [
+        "R1",
+        "R2"
+      ]
+    }
+  ]
+}

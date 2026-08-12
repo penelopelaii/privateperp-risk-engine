@@ -44,29 +44,3 @@ export async function evaluateRiskV1(
 
   return response.json();
 }
-
-/**
- * Evaluate one market state across a range of mark staleness values.
- *
- * Issued as parallel requests against the same endpoint rather than a bespoke
- * sweep route, so the curve the frontend draws is made of exactly the same
- * evaluations a caller would get one at a time.
- */
-export async function sweepStaleness(
-  state: MarketState,
-  stalenessDays: number[],
-  signal?: AbortSignal,
-): Promise<RiskEvaluationV1Response[]> {
-  return Promise.all(
-    stalenessDays.map((days) =>
-      evaluateRiskV1(
-        {
-          ...state,
-          mark_staleness_days: days,
-          mark_refresh_days: Math.max(days, 1),
-        },
-        signal,
-      ),
-    ),
-  );
-}

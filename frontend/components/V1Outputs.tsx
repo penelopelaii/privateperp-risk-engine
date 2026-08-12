@@ -3,6 +3,7 @@
 import {
   MECHANISM_LABELS,
   REGIME_LABELS,
+  type RegimeTrigger,
   type RiskOutputsV1,
 } from "@/lib/typesV1";
 
@@ -40,6 +41,23 @@ function Metric({
   );
 }
 
+function r3DispersionExplanation(
+  regime: RegimeTrigger,
+  ratio: number,
+): string {
+  const relative =
+    ratio >= 1
+      ? `${ratio.toFixed(1)}× larger than`
+      : `${(1 / Math.max(ratio, 1e-9)).toFixed(1)}× smaller than`;
+  return (
+    `Source disagreement is ${relative} one day's expected price move ` +
+    `(dispersion ÷ σ√(1/365) = ${ratio.toFixed(2)}). ` +
+    `When dispersion dominates diffusion, liquidations track source noise more than ` +
+    `solvency — measured buffer ${regime.measured.toFixed(2)} vs cushion ` +
+    `${regime.threshold.toFixed(2)}. Raising margin cannot fix that signal.`
+  );
+}
+
 export default function V1Outputs({ outputs, error, pending }: Props) {
   if (error) {
     return (
@@ -69,7 +87,9 @@ export default function V1Outputs({ outputs, error, pending }: Props) {
       <div className={viable ? "verdict verdict-ok" : "verdict verdict-fail"}>
         <div className="verdict-head">
           <span className="verdict-flag">
-            {viable ? "Viable as a continuous perp" : "Not viable as a continuous perp"}
+            {viable
+              ? "Inside the frontier — tighten parameters"
+              : "Beyond the frontier — change the mechanism"}
           </span>
           <span className="verdict-mechanism">
             {MECHANISM_LABELS[outputs.recommended_mechanism]}
@@ -77,22 +97,33 @@ export default function V1Outputs({ outputs, error, pending }: Props) {
         </div>
         <p className="verdict-body">
           {viable
-            ? "All three preconditions hold, so continuous mark-based margining is an admissible mechanism here."
-            : "Continuous mark-based margining is not a parameter setting that can be tightened into working. The recommended instrument is shown above; no tradable leverage is offered below."}
+            ? "Continuous mark-based margining still works here. The response is higher margin, lower leverage, and tighter size limits — not a different instrument."
+            : "Continuous mark-based margining cannot be repaired by raising collateral. The recommended instrument is shown above; no tradable leverage is offered below."}
         </p>
       </div>
 
       {outputs.triggered_regimes.length > 0 ? (
         <div className="regimes">
           {outputs.triggered_regimes.map((regime) => (
-            <details className="regime" key={regime.id}>
+            <details
+              className="regime"
+              key={regime.id}
+              open={regime.id === "R3"}
+            >
               <summary>
                 <span className="regime-id">{REGIME_LABELS[regime.id]}</span>
                 <span className="regime-numbers">
                   {regime.measured.toFixed(3)} vs {regime.threshold.toFixed(3)}
                 </span>
               </summary>
-              <p>{regime.description}</p>
+              <p>
+                {regime.id === "R3"
+                  ? r3DispersionExplanation(
+                      regime,
+                      dimensions.dispersion_diagnostic_ratio,
+                    )
+                  : regime.description}
+              </p>
             </details>
           ))}
         </div>
@@ -126,7 +157,9 @@ export default function V1Outputs({ outputs, error, pending }: Props) {
           label="Required initial margin"
           value={percent(margin_diagnostics.required_initial_margin)}
           hint="Never clamped at 100%"
-          tone={margin_diagnostics.required_initial_margin >= 1 ? "danger" : undefined}
+          tone={
+            margin_diagnostics.required_initial_margin >= 1 ? "danger" : undefined
+          }
         />
         <Metric
           label="Required maintenance margin"
@@ -180,9 +213,12 @@ export default function V1Outputs({ outputs, error, pending }: Props) {
           hint="Spot plus whatever the hedge genuinely adds"
         />
         <Metric
-          label="Liquidation cost at limit"
-          value={percent(dimensions.liquidation_cost_at_limit)}
-          hint={`Over a ${dimensions.unwind_days_at_limit.toFixed(1)}-day unwind`}
+          label="Dispersion vs one-day move"
+          value={`${dimensions.dispersion_diagnostic_ratio.toFixed(2)}×`}
+          hint="Source disagreement ÷ σ√(1/365)"
+          tone={
+            dimensions.dispersion_diagnostic_ratio >= 1 ? "warn" : undefined
+          }
         />
         <Metric
           label="Residual volatility"

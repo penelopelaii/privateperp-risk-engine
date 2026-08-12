@@ -1,13 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-
-import StalenessExperiment from "@/components/StalenessExperiment";
 import V1InputForm from "@/components/V1InputForm";
 import V1Outputs from "@/components/V1Outputs";
+import ViabilityFrontier from "@/components/ViabilityFrontier";
 import { evaluateRiskV1 } from "@/lib/api";
 import { DEFAULT_PRESET_V1, PRESETS_V1 } from "@/lib/presetsV1";
 import type { MarketState, RiskOutputsV1 } from "@/lib/typesV1";
+import { useCallback, useEffect, useState } from "react";
 
 const DEBOUNCE_MS = 150;
 
@@ -59,6 +58,7 @@ export default function V1Console() {
 
   return (
     <>
+      <ViabilityFrontier state={state} outputs={outputs} />
       <div className="layout">
         <V1InputForm
           state={state}
@@ -68,7 +68,6 @@ export default function V1Console() {
         />
         <V1Outputs outputs={outputs} error={error} pending={pending} />
       </div>
-      <StalenessExperiment />
     </>
   );
 }

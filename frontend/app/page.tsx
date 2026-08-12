@@ -1,13 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-
 import OutputCards from "@/components/OutputCards";
 import RiskInputForm from "@/components/RiskInputForm";
 import V1Console from "@/components/V1Console";
 import { evaluateRisk } from "@/lib/api";
 import { DEFAULT_PRESET, PRESETS } from "@/lib/presets";
 import type { RiskInputs, RiskOutputs } from "@/lib/types";
+import { useCallback, useEffect, useState } from "react";
 
 const DEBOUNCE_MS = 150;
 
@@ -78,12 +77,14 @@ export default function Home() {
   return (
     <main>
       <header className="masthead">
-        <p className="eyebrow">Research prototype &middot; synthetic data only</p>
-        <h1>PrivatePerp Risk Engine</h1>
+        <p className="eyebrow">
+          PrivatePerp Risk Engine &middot; research prototype &middot; synthetic
+          data only
+        </p>
+        <h1>When Should a Perp Stop Being a Perp?</h1>
         <p className="question">
-          How should leverage, margin, and market risk limits change as an
-          underlying asset becomes less liquid, less hedgeable, and more
-          difficult to price?
+          Mapping the viability frontier of continuous margining for illiquid
+          underlyings.
         </p>
       </header>
 

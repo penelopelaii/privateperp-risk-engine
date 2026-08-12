@@ -75,8 +75,8 @@ Open `http://localhost:3000`. The frontend expects the API at
 
 Start with the presets, which walk one engine across four market qualities and
 produce four different instruments — perp, perp, periodic auction, settled
-forward. Then use the mark-staleness experiment underneath, which ages the mark
-on the profile above from 0 to 120 days.
+forward. The viability frontier at the top of the page shows where continuous
+margining stops being available as mark staleness and volatility change.
 
 ```bash
 python -m pytest

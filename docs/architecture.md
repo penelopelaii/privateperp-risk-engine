@@ -129,10 +129,10 @@ Next.js App Router with TypeScript. `lib/types.ts` and `lib/typesV1.ts` mirror
 the Pydantic models by hand; the models are small and stable enough that
 generating them from the OpenAPI schema is not yet worth the build step.
 
-The frontend has no risk logic — including in the staleness experiment, whose
-curve is drawn from parallel calls to the same endpoint a user hits one at a
-time, rather than from a client-side approximation or a bespoke sweep route.
-That keeps the browser from becoming a second, silently diverging implementation.
+The frontend has no risk logic. The viability-frontier map is baked from the
+same recorded synthetic profile as `simulations/viability_frontier.py`; live
+assessments still come from the API. That keeps the browser from becoming a
+second, silently diverging implementation of the model.
 
 | Path | Responsibility |
 | --- | --- |
@@ -140,7 +140,7 @@ That keeps the browser from becoming a second, silently diverging implementation
 | `components/V1Console.tsx` | v1 state, debounced evaluation |
 | `components/V1InputForm.tsx` | Six primary drivers, the rest behind Advanced |
 | `components/V1Outputs.tsx` | Viability, mechanism, regimes, limits, dimensions |
-| `components/StalenessExperiment.tsx` | The 0-120 day sweep over the recorded frontier profile |
+| `components/ViabilityFrontier.tsx` | Staleness × volatility mechanism map for the recorded scenario |
 
 ## Deliberate omissions
 
