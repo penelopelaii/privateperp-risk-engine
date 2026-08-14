@@ -168,7 +168,7 @@ export const MECHANISM_LABELS: Record<Mechanism, string> = {
 };
 
 export const REGIME_LABELS: Record<RegimeId, string> = {
-  R1: "R1 · Solvency",
-  R2: "R2 · Observability",
-  R3: "R3 · Signal-to-noise",
+  R1: "R1 · Solvency boundary",
+  R2: "R2 · Observability boundary",
+  R3: "R3 · Signal-to-noise boundary",
 };

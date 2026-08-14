@@ -78,14 +78,19 @@ export default function Home() {
     <main>
       <header className="masthead">
         <p className="eyebrow">
-          PrivatePerp Risk Engine &middot; research prototype &middot; synthetic
-          data only
+          Research prototype &middot; synthetic data only
         </p>
         <h1>When Should a Perp Stop Being a Perp?</h1>
-        <p className="question">
-          Mapping the viability frontier of continuous margining for illiquid
-          underlyings.
+        <p className="lede">
+          PrivatePerp Risk Engine — mapping the viability frontier of continuous
+          margining for illiquid underlyings.
         </p>
+        <blockquote className="thesis">
+          <p>
+            Margin can absorb losses, but it cannot repair an unreliable
+            liquidation signal.
+          </p>
+        </blockquote>
       </header>
 
       <nav className="engine-tabs" aria-label="Engine version">
@@ -96,7 +101,7 @@ export default function Home() {
           onClick={() => setEngine("v1")}
         >
           V1 Adaptive Risk Engine
-          <em>Five risk dimensions, and an answer of &ldquo;no&rdquo;</em>
+          <em>Five dimensions, mechanism switching, and an answer of &ldquo;no&rdquo;</em>
         </button>
         <button
           type="button"

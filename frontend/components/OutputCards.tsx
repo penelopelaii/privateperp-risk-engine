@@ -34,7 +34,7 @@ interface Props {
 export default function OutputCards({ outputs, error, pending }: Props) {
   if (error) {
     return (
-      <section className="panel">
+      <section className="panel panel-focus">
         <h2>Recommended parameters</h2>
         <p className="error">
           {error} Start the backend with{" "}
@@ -81,7 +81,7 @@ export default function OutputCards({ outputs, error, pending }: Props) {
     : [];
 
   return (
-    <section className={pending ? "panel pending" : "panel"}>
+    <section className={pending ? "panel panel-focus pending" : "panel panel-focus"}>
       <h2>Recommended parameters</h2>
 
       {outputs ? (

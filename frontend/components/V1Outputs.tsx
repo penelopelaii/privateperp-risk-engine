@@ -30,7 +30,7 @@ function Metric({
   label: string;
   value: string;
   hint?: string;
-  tone?: "warn" | "danger";
+  tone?: "ok" | "warn" | "danger";
 }) {
   return (
     <div className={tone ? `metric metric-${tone}` : "metric"}>
@@ -61,8 +61,8 @@ function r3DispersionExplanation(
 export default function V1Outputs({ outputs, error, pending }: Props) {
   if (error) {
     return (
-      <section className="panel">
-        <h2>Assessment</h2>
+      <section className="panel panel-focus">
+        <h2>Recommendation</h2>
         <p className="error">{error}</p>
       </section>
     );
@@ -70,8 +70,8 @@ export default function V1Outputs({ outputs, error, pending }: Props) {
 
   if (!outputs) {
     return (
-      <section className="panel">
-        <h2>Assessment</h2>
+      <section className="panel panel-focus">
+        <h2>Recommendation</h2>
         <p className="control-hint">Evaluating…</p>
       </section>
     );
@@ -81,52 +81,88 @@ export default function V1Outputs({ outputs, error, pending }: Props) {
   const viable = outputs.viable_as_continuous_perp;
 
   return (
-    <section className={pending ? "panel pending" : "panel"}>
-      <h2>Assessment</h2>
+    <section className={pending ? "panel panel-focus pending" : "panel panel-focus"}>
+      <h2>Recommendation</h2>
 
-      <div className={viable ? "verdict verdict-ok" : "verdict verdict-fail"}>
-        <div className="verdict-head">
-          <span className="verdict-flag">
-            {viable
-              ? "Inside the frontier — tighten parameters"
-              : "Beyond the frontier — change the mechanism"}
-          </span>
-          <span className="verdict-mechanism">
-            {MECHANISM_LABELS[outputs.recommended_mechanism]}
+      <div className="verdict-banner">
+        <div className="verdict-banner-row">
+          <div>
+            <span className="verdict-kicker">
+              {viable
+                ? "Inside the viability frontier"
+                : "Beyond the viability frontier"}
+            </span>
+            <p className="verdict-title">
+              {MECHANISM_LABELS[outputs.recommended_mechanism]}
+            </p>
+          </div>
+          <span className="verdict-status">
+            {viable ? "Continuous margining" : "Mechanism switching"}
           </span>
         </div>
-        <p className="verdict-body">
-          {viable
-            ? "Continuous mark-based margining still works here. The response is higher margin, lower leverage, and tighter size limits — not a different instrument."
-            : "Continuous mark-based margining cannot be repaired by raising collateral. The recommended instrument is shown above; no tradable leverage is offered below."}
-        </p>
+      </div>
+
+      <p className="verdict-body">
+        {viable
+          ? "Continuous mark-based margining still works here. The response is higher margin, lower leverage, and tighter size limits — not a different instrument."
+          : "Continuous mark-based margining cannot be repaired by raising collateral. The recommended instrument is shown above; no tradable leverage is offered below."}
+      </p>
+
+      <div className="verdict-stats">
+        <div>
+          <span className="verdict-stat-label">Viability</span>
+          <span className="verdict-stat-value">
+            {viable ? "Viable" : "Not viable"}
+          </span>
+          <span className="verdict-stat-hint">as a continuous perp</span>
+        </div>
+        <div>
+          <span className="verdict-stat-label">Required initial margin</span>
+          <span className="verdict-stat-value">
+            {percent(margin_diagnostics.required_initial_margin)}
+          </span>
+          <span className="verdict-stat-hint">Never clamped at 100%</span>
+        </div>
+        <div>
+          <span className="verdict-stat-label">Implied leverage</span>
+          <span className="verdict-stat-value">
+            {leverage(margin_diagnostics.implied_leverage)}
+          </span>
+          <span className="verdict-stat-hint">1 / required initial margin</span>
+        </div>
       </div>
 
       {outputs.triggered_regimes.length > 0 ? (
-        <div className="regimes">
-          {outputs.triggered_regimes.map((regime) => (
-            <details
-              className="regime"
-              key={regime.id}
-              open={regime.id === "R3"}
-            >
-              <summary>
-                <span className="regime-id">{REGIME_LABELS[regime.id]}</span>
-                <span className="regime-numbers">
-                  {regime.measured.toFixed(3)} vs {regime.threshold.toFixed(3)}
-                </span>
-              </summary>
-              <p>
-                {regime.id === "R3"
-                  ? r3DispersionExplanation(
-                      regime,
-                      dimensions.dispersion_diagnostic_ratio,
-                    )
-                  : regime.description}
-              </p>
-            </details>
-          ))}
-        </div>
+        <>
+          <h3>Failure boundaries</h3>
+          <div className="regimes">
+            {outputs.triggered_regimes.map((regime) => (
+              <details
+                className="regime regime-failed"
+                key={regime.id}
+                open={regime.id === "R3"}
+              >
+                <summary>
+                  <span className="regime-id">
+                    {REGIME_LABELS[regime.id]}
+                    <span className="regime-badge">Triggered</span>
+                  </span>
+                  <span className="regime-numbers">
+                    {regime.measured.toFixed(3)} vs {regime.threshold.toFixed(3)}
+                  </span>
+                </summary>
+                <p>
+                  {regime.id === "R3"
+                    ? r3DispersionExplanation(
+                        regime,
+                        dimensions.dispersion_diagnostic_ratio,
+                      )
+                    : regime.description}
+                </p>
+              </details>
+            ))}
+          </div>
+        </>
       ) : null}
 
       <h3>Tradable parameters</h3>
@@ -158,7 +194,7 @@ export default function V1Outputs({ outputs, error, pending }: Props) {
           value={percent(margin_diagnostics.required_initial_margin)}
           hint="Never clamped at 100%"
           tone={
-            margin_diagnostics.required_initial_margin >= 1 ? "danger" : undefined
+            margin_diagnostics.required_initial_margin >= 1 ? "danger" : "ok"
           }
         />
         <Metric

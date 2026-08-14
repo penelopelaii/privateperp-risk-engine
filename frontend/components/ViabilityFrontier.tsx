@@ -10,16 +10,25 @@ import {
 } from "@/lib/typesV1";
 
 /**
- * Viability frontier map. Cell colours and the white boundary come from
+ * Viability frontier map. Cell fills and the stepped boundary come from
  * ``/risk/v1/frontier`` (non-axis state held fixed, axes swept server-side).
  * "You are here" tracks the console's current volatility and staleness only.
+ *
+ * Regions are grayscale plus hatch so the map stays readable without colour.
  */
 
-const MECHANISM_TONE: Record<Mechanism, string> = {
-  continuous_perp: "#3fb984",
-  periodic_auction: "#d7b64a",
-  settled_forward: "#e08a4b",
-  not_listable: "#e0574b",
+const MECHANISM_FILL: Record<Mechanism, string> = {
+  continuous_perp: "#fafafa",
+  periodic_auction: "url(#hatch-auction)",
+  settled_forward: "url(#hatch-forward)",
+  not_listable: "url(#hatch-unlistable)",
+};
+
+const MECHANISM_SWATCH: Record<Mechanism, string> = {
+  continuous_perp: "swatch-continuous",
+  periodic_auction: "swatch-auction",
+  settled_forward: "swatch-forward",
+  not_listable: "swatch-unlistable",
 };
 
 const W = 760;
@@ -238,9 +247,9 @@ export default function ViabilityFrontier({
       }
     >
       <div className="frontier-header">
-        <h2>The Viability Frontier</h2>
+        <h2>Viability frontier</h2>
         <span className="frontier-tag">
-          Conditional on current non-axis inputs · synthetic
+          Conditional on non-axis inputs · synthetic
         </span>
       </div>
 
@@ -260,6 +269,51 @@ export default function ViabilityFrontier({
         role="img"
         aria-label="Viability frontier: recommended mechanism by mark staleness and annualised volatility"
       >
+        <defs>
+          <pattern
+            id="hatch-auction"
+            patternUnits="userSpaceOnUse"
+            width="6"
+            height="6"
+          >
+            <rect width="6" height="6" fill="#d4d4d4" />
+            <path
+              d="M0 6 L6 0"
+              stroke="#111"
+              strokeWidth="0.55"
+              opacity="0.35"
+            />
+          </pattern>
+          <pattern
+            id="hatch-forward"
+            patternUnits="userSpaceOnUse"
+            width="5"
+            height="5"
+          >
+            <rect width="5" height="5" fill="#8f8f8f" />
+            <path
+              d="M5 0 L0 5"
+              stroke="#111"
+              strokeWidth="0.65"
+              opacity="0.42"
+            />
+          </pattern>
+          <pattern
+            id="hatch-unlistable"
+            patternUnits="userSpaceOnUse"
+            width="6"
+            height="6"
+          >
+            <rect width="6" height="6" fill="#3f3f3f" />
+            <path
+              d="M0 0 L6 6 M6 0 L0 6"
+              stroke="#fff"
+              strokeWidth="0.45"
+              opacity="0.28"
+            />
+          </pattern>
+        </defs>
+
         {cells.map((cell) => {
           const dayEdge = dayEdges.find(
             (edge) => edge.day === cell.staleness_days,
@@ -273,8 +327,10 @@ export default function ViabilityFrontier({
               y={volEdge.y0}
               width={Math.max(dayEdge.x1 - dayEdge.x0, 0.5)}
               height={Math.max(volEdge.y1 - volEdge.y0, 0.5)}
-              fill={MECHANISM_TONE[cell.mechanism]}
-              opacity={0.88}
+              fill={MECHANISM_FILL[cell.mechanism]}
+              stroke="#111"
+              strokeOpacity={0.08}
+              strokeWidth={0.4}
             />
           );
         })}
@@ -374,10 +430,7 @@ export default function ViabilityFrontier({
           ] as Mechanism[]
         ).map((mechanism) => (
           <span className="legend-item" key={mechanism}>
-            <i
-              className="swatch"
-              style={{ background: MECHANISM_TONE[mechanism] }}
-            />{" "}
+            <i className={`swatch ${MECHANISM_SWATCH[mechanism]}`} />{" "}
             {MECHANISM_LABELS[mechanism]}
           </span>
         ))}
@@ -408,7 +461,7 @@ export default function ViabilityFrontier({
 
       <div className="experiment-readout">
         <div className={liveViable ? "metric metric-ok" : "metric metric-danger"}>
-          <span className="metric-label">At your inputs</span>
+          <span className="metric-label">Current state</span>
           <span className="metric-value">
             {MECHANISM_LABELS[liveMechanism]}
           </span>
